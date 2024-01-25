@@ -180,13 +180,15 @@ export async function fetchCustomers() {
   try {
     const data = await sql<CustomerField>`
       SELECT
-        id,
-        name
+        name,
+        email,
+        image_url
       FROM customers
       ORDER BY name ASC
     `;
 
     const customers = data.rows;
+    console.log(customers);
     return customers;
   } catch (err) {
     console.error('Database Error:', err);
